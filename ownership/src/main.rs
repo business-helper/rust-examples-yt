@@ -35,6 +35,8 @@ fn main() {
   println!("S6 changed to {}", s6);
 
   borrow_reference_once();
+
+  word();
 }
 
 fn func_ownership() {
@@ -89,6 +91,24 @@ fn borrow_reference_once() {
 // this function doesn't return real value due to lifetime restriction.
 // fn dangle() -> &String {
 //   let s = String::from("Hello");
-
 //   &s
 // }
+
+fn word() {
+  let mut s = String::from("Hello world!");
+  let world = first_word(&s);
+  println!("Length is {}", world);
+  s.clear();
+
+  fn first_word(s: &String) -> usize {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+      if item == b' ' {
+        return i;
+      }
+    }
+
+    s.len()
+  }
+}
