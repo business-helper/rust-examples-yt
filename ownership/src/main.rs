@@ -22,8 +22,12 @@ fn main() {
   let s4 = takes_and_gives_back(s4_1);
   println!("s1 = {}, s4 = {}", s1, s4);
 
-  // let len = calculate_length(s1);
-  // println!("The length of '{} is {}.", s1, len);
+  let s5_1 = String::from("Hello 5-1");
+  let (s5, len) = calculate_length(s5_1);
+  println!("The length of '{} is {}.", s5, len);
+
+  let len1 = calculate_length1(&s5);
+  println!("The length of '{} is {}.", s5, len1);
 }
 
 fn func_ownership() {
@@ -49,8 +53,12 @@ fn takes_and_gives_back(a_string: String) -> String {
   a_string
 }
 
-fn calculate_length(s: String) -> usize {
+fn calculate_length(s: String) -> (String, usize) {
   let length = s.len(); // len() returns the length of a String.
-  // (s, length)
+  (s, length)
+}
+
+fn calculate_length1(s: &String) -> usize {
+  let length = s.len(); // len() returns the length of a String.
   length
 }
