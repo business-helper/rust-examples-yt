@@ -17,12 +17,17 @@ fn main() {
   let s3 = gives_ownership();
   println!("s3={}", s3);
 
+  println!("[Take & Give Back]");
+  let s4_1 = String::from("Hello S4-1");
+  let s4 = takes_and_gives_back(s4_1);
+  println!("s1 = {}, s4 = {}", s1, s4);
+
   // let len = calculate_length(s1);
   // println!("The length of '{} is {}.", s1, len);
 }
 
 fn func_ownership() {
-  let s= String::from("hello");
+  let s= String::from("hello S3");
   takes_ownership(s);
   // println!("{}", s); // this will throw an error due to the ownership
 
@@ -38,6 +43,10 @@ fn makes_copy(some_integer: i32) {
 fn gives_ownership() -> String {
   let some_string = String::from("hello");
   some_string
+}
+
+fn takes_and_gives_back(a_string: String) -> String {
+  a_string
 }
 
 fn calculate_length(s: String) -> usize {
