@@ -28,6 +28,11 @@ fn main() {
 
   let len1 = calculate_length1(&s5);
   println!("The length of '{} is {}.", s5, len1);
+
+  println!("Reference is immutable");
+  let mut s6 = String::from("Hello S6");
+  change(&mut s6);
+  println!("S6 changed to {}", s6);
 }
 
 fn func_ownership() {
@@ -61,4 +66,8 @@ fn calculate_length(s: String) -> (String, usize) {
 fn calculate_length1(s: &String) -> usize {
   let length = s.len(); // len() returns the length of a String.
   length
+}
+
+fn change(some_string: &mut String) {
+  some_string.push_str(" world");
 }
