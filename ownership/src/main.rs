@@ -33,6 +33,8 @@ fn main() {
   let mut s6 = String::from("Hello S6");
   change(&mut s6);
   println!("S6 changed to {}", s6);
+
+  borrow_reference_once();
 }
 
 fn func_ownership() {
@@ -70,4 +72,16 @@ fn calculate_length1(s: &String) -> usize {
 
 fn change(some_string: &mut String) {
   some_string.push_str(" world");
+}
+
+fn borrow_reference_once() {
+  println!("[Borrow Ref once only]");
+  let mut s = String::from("Hello world");
+  let r1 = &s;
+  let r2 = &s;
+  // let r2 = &mut s;
+  println!("{}, {}", r1, r2);
+
+  let r3 = &mut s;
+  println!("{}", r3);
 }
