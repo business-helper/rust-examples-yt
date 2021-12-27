@@ -85,3 +85,10 @@ fn borrow_reference_once() {
   let r3 = &mut s;
   println!("{}", r3);
 }
+
+// this function doesn't return real value due to lifetime restriction.
+// fn dangle() -> &String {
+//   let s = String::from("Hello");
+
+//   &s
+// }
