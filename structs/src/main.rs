@@ -8,17 +8,47 @@ struct User {
 struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
+#[derive(Debug)]
+struct Rectangle {
+  width: u32,
+  height: u32
+}
+
 fn main() {
   let width1 = 30;
   let height1 = 50;
 
   println!(
     "The area of the rectangle is {} square pixels.",
-    area(width1, height1)
+    area0(width1, height1)
+  );
+
+  let rect = (30, 50);
+  println!(
+    "The area of the rectangle is {} square pixels.",
+    area1(rect)
+  );
+
+  let rectangle = Rectangle {
+    width: 20,
+    height: 30,
+  };
+  println!("rect: {:?}", rectangle);
+  println!(
+    "The area of the rectangle is {} square pixels.",
+    area2(&rectangle)
   );
 }
 
-fn area(width: u32, height: u32) -> u32 {
+fn area2(rect: &Rectangle) -> u32 {
+  rect.width * rect.height
+}
+
+fn area1(dimensions: (u32, u32)) -> u32 {
+  dimensions.0 * dimensions.1
+}
+
+fn area0(width: u32, height: u32) -> u32 {
   width * height
 }
 
