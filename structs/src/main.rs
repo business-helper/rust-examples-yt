@@ -24,6 +24,12 @@ impl Rectangle {
   }
 }
 
+impl Rectangle {
+  fn square(size: u32) -> Rectangle {
+    Rectangle { width: size, height: size }
+  }
+}
+
 fn main() {
   let width1 = 30;
   let height1 = 50;
@@ -71,6 +77,9 @@ fn main() {
 
   println!("rect1 can hold rect2: {}", rect1.can_hold(&rect2));
   println!("rect2 can hold rect1: {}", rect2.can_hold(&rect1));
+
+  let rect3 = Rectangle::square(25);
+  println!("The area of rect3 is {}", rect3.area());
 }
 
 fn area2(rect: &Rectangle) -> u32 {
