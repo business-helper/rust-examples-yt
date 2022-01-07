@@ -1,3 +1,5 @@
+use unicode_segmentation::UnicodeSegmentation;
+
 fn main() {
   func1();
 
@@ -6,6 +8,10 @@ fn main() {
   func3();
 
   func4();
+
+  func5();
+
+  func6();
 }
 
 fn func1() {
@@ -47,6 +53,7 @@ fn func3() {
   }
 }
 
+// array of enum
 fn func4() {
   println!("----- func4 -----");
 
@@ -66,4 +73,46 @@ fn func4() {
     SpreadsheetCell::Int(i) => println!("{}", i),
     _ => println!("Not a integer")
   };
+}
+
+// various strng definition
+fn func5() {
+  println!("----- func5 -----");
+
+  // strings are stroed as a collection of UTF-8 encoded bytes.
+  let s1 = String::new();
+  let s2 = "initial contents";
+  let s3 = s2.to_string();
+  let s4 = String::from("initial contents");
+
+  let mut s = String::from("foo");
+  s.push_str(" bar");
+  s.push('!');
+
+  println!("mutated string is {}", s);
+}
+
+fn func6() {
+  println!("----- func6 -----");
+
+  let s1 = String::from("Hello, ");
+  let s2 = String::from("world!");
+  let s3: String = s1 + &s2;
+
+  println!("merged string: {}", s3);
+
+  // string is the bytes array in fundamental.
+  for b in "العددي".bytes() {
+    println!("{}", b);
+  }
+
+  // we also can iterate the string as a scalar values //العددية
+  for c in "العددي".chars() {
+    println!("{}", c);
+  }
+
+  // iterate a string as a grapheme clusters.
+  for g in "العددي".graphemes(true) {
+    println!("{}", g);
+  }
 }
