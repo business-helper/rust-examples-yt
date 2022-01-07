@@ -92,3 +92,22 @@ pub fn eat_at_restaurant3() {
   hosting::add_to_waitlist();
   front_of_house3::hosting::add_to_waitlist();
 }
+
+use std::fmt;
+use std::io;
+use std::fmt::Result;
+use std::io::Result as IoResult;
+
+// fn function1() -> fmt::Result {}
+// fn function2() -> io::Result<()> {}
+
+fn function1() -> Result {
+  Ok(())
+}
+fn function2() -> IoResult<()> {
+  Ok(())
+}
+
+
+
+
