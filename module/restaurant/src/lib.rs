@@ -77,3 +77,18 @@ pub fn eat_at_restaurant2() {
 }
 
 // ----------------------------------------------
+
+mod front_of_house3 {
+  pub mod hosting {
+    pub fn add_to_waitlist() {}
+  }
+}
+
+// use crate::front_of_house3::hosting;
+use self::front_of_house3::hosting;
+
+pub fn eat_at_restaurant3() {
+  front_of_house3::hosting::add_to_waitlist();
+  hosting::add_to_waitlist();
+  front_of_house3::hosting::add_to_waitlist();
+}
