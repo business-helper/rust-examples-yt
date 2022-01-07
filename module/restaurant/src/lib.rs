@@ -76,7 +76,7 @@ pub fn eat_at_restaurant2() {
   let order2 = back_of_house2::Appetizer::Salad;
 }
 
-// ----------------------------------------------
+// ------------------------------ use Keyword ----------------
 
 mod front_of_house3 {
   pub mod hosting {
@@ -85,13 +85,15 @@ mod front_of_house3 {
 }
 
 // use crate::front_of_house3::hosting;
-use self::front_of_house3::hosting;
+pub use self::front_of_house3::hosting;
 
 pub fn eat_at_restaurant3() {
   front_of_house3::hosting::add_to_waitlist();
   hosting::add_to_waitlist();
   front_of_house3::hosting::add_to_waitlist();
 }
+
+// --------------------- import with renaming
 
 use std::fmt;
 use std::io;
@@ -108,6 +110,14 @@ fn function2() -> IoResult<()> {
   Ok(())
 }
 
+// ------------- write module in a separated file.
 
+mod front_of_house4;
 
+pub use crate::front_of_house4::hosting;
 
+pub fn eat_at_restaurant4() {
+  hosting::add_to_waitlist();
+  hosting::add_to_waitlist();
+  hosting::add_to_waitlist();
+}
