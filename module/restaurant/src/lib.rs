@@ -61,3 +61,19 @@ pub fn eat_at_back_of_house() {
 
   meal.toast = String::from("Wheat");
 }
+
+// --------------------------- Enum in module --------------
+
+mod back_of_house2 {
+  pub enum Appetizer {
+    Soup,
+    Salad,
+  }
+}
+
+pub fn eat_at_restaurant2() {
+  let order1 = back_of_house2::Appetizer::Soup;
+  let order2 = back_of_house2::Appetizer::Salad;
+}
+
+// ----------------------------------------------
