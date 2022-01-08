@@ -11,6 +11,25 @@ struct Point<T, U> {
   y: U,
 }
 
+impl<T, U> Point<T, U> {
+  fn x(&self) -> &T {
+    &self.x
+  }
+
+  fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
+    Point {
+      x: self.x,
+      y: other.y,
+    }
+  }
+}
+
+impl<T, f64> Point<T, f64> {
+  fn y(&self) -> &f64 {
+    &self.y
+  }
+}
+
 enum Option<T> {
   Some(T),
   None,
@@ -25,6 +44,11 @@ fn func3() {
   let p1 = Point { x: 5, y: 10 };
   let p2 = Point { x: 5.0, y: 10.0 };
   let p3 = Point { x: 5, y: 10.0 };
+  let p4 = Point { x: "Hello", y: 'c' };
+  let p5 = p3.mixup(p4);
+
+  println!("p5.x = {}, p5.y = {}", p5.x, p5.y);
+
 }
 
 // apply generic type
